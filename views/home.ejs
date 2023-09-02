@@ -1,0 +1,46 @@
+<html>
+    <head>
+     <title>
+        <%= title %>
+     </title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- place our own css below so that we can override any above css-->
+     <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+       <div class ="head-container">
+        <i class="fa fa-address-book" id ="icon-contact"></i>
+        <h1 id = "my-heading">My Contacts List</h1>
+       </div>
+
+        <div class="contacts-list-container">
+            <ul> 
+                <% for(let i of contact_list) { %> 
+                    <li class="contact">
+                       <div class = "details">
+                        <p><%= i.name %></p>
+                        <p><%= i.phone %></p>
+                       </div>
+
+                       <div class ="delete-button">
+                        <a href="/delete-contact/?id=<%=i.phone %>">
+                            <i class ="fa fa-window-close"></i>
+                        </a>
+                       </div>
+
+                      </li>  
+                   
+                <% } %>
+            </ul>
+        </div>
+
+        <form id = "new-contact-form" action="/create-contact" method = "POST">
+            <input type="text" name = "my_name" placeholder="Enter your Name" required>
+            <input type="number" name = "my_phone"  placeholder="Enter your Phone Number" required>
+            <button type ="submit" id = "add">Add Contact</button>
+        </form>
+
+        <script type ="text/javascript" src = "/js/home.js"></script>
+        
+    </body>
+</html>
