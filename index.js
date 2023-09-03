@@ -97,9 +97,10 @@ app.post('/create-contact', async function(req,res){
   //schema is for collection (new code)
 
     try {
+        console.log("body", req.body);
        const newContact =  await Contact.create({
-        name: req.body.name,
-        phone: req.body.phone
+        name: req.body.my_name,
+        phone: req.body.my_phone
         });
 
         console.log("****** newly created contact *********", newContact);
